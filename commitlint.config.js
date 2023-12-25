@@ -28,6 +28,8 @@ module.exports = {
         "revert",
         // 打包: 🔨 项目打包发布
         "build",
+        // 删除: ⏪️ 删除功能
+        "remove",
       ],
     ],
     "type-empty": [2, "never"],
@@ -92,6 +94,7 @@ module.exports = {
       },
       { value: "revert: 回退", name: "回退: ⏪️ 回滚 commit", emoji: "⏪️" },
       { value: "build: 打包", name: "打包: 🔨 项目打包发布", emoji: "🔨" },
+      { value: "remove: 删除", name: "删除: ⏪️ 删除功能", emoji: "⏪️" },
     ],
     useEmoji: true,
   },

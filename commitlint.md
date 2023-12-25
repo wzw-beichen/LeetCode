@@ -1,4 +1,3 @@
-  
 #### Install
 ```
 npm i -D @commitlint/cli @commitlint/config-conventional
