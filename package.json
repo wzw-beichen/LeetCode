@@ -16,7 +16,6 @@
     "@commitlint/config-conventional": "^18.4.3",
     "@types/node": "^20.10.3",
     "commitizen": "^4.3.0",
-    "css-loader": "^6.8.1",
     "cz-git": "^1.8.0",
     "husky": "^8.0.3",
     "typescript": "^5.3.3"
