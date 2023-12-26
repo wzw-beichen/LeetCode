@@ -1,35 +1,48 @@
 function lengthOfLongestSubstring(s: string): number {
   if (!s) return 0;
 
-  const findStringLastIndex = (str: string, value: string) => {
-    let lastIndex = -1;
-    if (!value) return lastIndex;
-    const length = str.length;
-    for (let i = 0; i < length; i++) {
-      if (str[i] === value) {
-        lastIndex = i;
-      }
-    }
-    return lastIndex;
-  };
-
   const array = s.split("");
-  const numArr = array.reduce<string[][]>(
-    ((map: string[]) => (total, item, index) => {
-      const i = findStringLastIndex(map.join(""), item);
+  const strs = array.reduce<string[]>(
+    ((Map: string[]) => (total, item, index) => {
+      const i = Map.findIndex((mapItem) => mapItem === item);
       if (~i) {
-        total.push(map.slice(i));
-        map = [...map.slice(i + 1), item];
+        total.push(Map.join(""));
+        Map = [...Map.slice(i + 1), item];
       } else {
-        map.push(item);
+        Map.push(item);
+      }
+      if (index === array.length - 1 && Map.length) {
+        total.push(Map.join(""));
       }
       return total;
     })([]),
     []
   );
-  console.log("numArr", numArr);
-  //   return Math.max(...numArr);
+  console.log("strs", strs);
+  return Math.max(...strs.map((item) => item.length));
 }
 
-const s = "abcabcbb";
-lengthOfLongestSubstring(s);
+const str = "abcabcbb";
+const maxNum = lengthOfLongestSubstring(str);
+console.log("maxNum", maxNum);
+
+function lengthOfLongestSubstring_second(s: string): number {
+  if (!s) return 0;
+  let left = 0;
+  const lookup: Set<string> = new Set();
+  let maxLen = 0;
+  let currLen = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    currLen += 1;
+    while (lookup.has(s[i])) {
+      lookup.delete(s[left]);
+      left += 1;
+      currLen -= 1;
+    }
+    maxLen = Math.max(maxLen, currLen);
+    lookup.add(s[i]);
+  }
+
+  return maxLen;
+}
