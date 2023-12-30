@@ -1,25 +1,19 @@
 function lengthOfLongestSubstring(s: string): number {
   if (!s) return 0;
-
-  const array = s.split("");
-  const strs = array.reduce<string[]>(
-    ((Map: string[]) => (total, item, index) => {
-      const i = Map.findIndex((mapItem) => mapItem === item);
-      if (~i) {
-        total.push(Map.join(""));
-        Map = [...Map.slice(i + 1), item];
-      } else {
-        Map.push(item);
-      }
-      if (index === array.length - 1 && Map.length) {
-        total.push(Map.join(""));
-      }
-      return total;
-    })([]),
-    []
-  );
-  console.log("strs", strs);
-  return Math.max(...strs.map((item) => item.length));
+  let map: string[] = [];
+  let total: string[] = [];
+  let maxLen = 0;
+  for (let i = 0; i < s.length; i++) {
+    const item = s[i];
+    const index = map.findIndex((mapItem) => mapItem === item);
+    if (~index) {
+      map = map.slice(index + 1);
+    }
+    map.push(item);
+    total.push([...map].join(""));
+    maxLen = Math.max(maxLen, map.length);
+  }
+  return maxLen;
 }
 
 const str = "abcabcbb";
@@ -46,3 +40,8 @@ function lengthOfLongestSubstring_second(s: string): number {
 
   return maxLen;
 }
+
+const s = "aacabdkacab";
+// set 1  a
+// set 2 left 1 0 a
+//
