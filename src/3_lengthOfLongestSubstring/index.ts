@@ -40,8 +40,3 @@ function lengthOfLongestSubstring_second(s: string): number {
 
   return maxLen;
 }
-
-const s = "aacabdkacab";
-// set 1  a
-// set 2 left 1 0 a
-//

@@ -13,5 +13,5 @@ function reverse(x: number): number {
   return flag ? -result : result;
 }
 
-const a = reverse(-123);
-console.log("a", a);
+const reverseNum = reverse(-123);
+console.log("reverseNum", reverseNum);

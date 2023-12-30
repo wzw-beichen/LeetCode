@@ -15,6 +15,3 @@ function convert(s: string, numRows: number): string {
   }
   return arr.join("");
 }
-
-// const a = reverse(-123);
-// console.log("a", a);
